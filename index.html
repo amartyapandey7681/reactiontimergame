@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>GAME</title>
+    <style>
+      .box{
+        position:absolute;
+        width:100px;
+        height:100px;
+        background-color:blue;
+        border-radius:0%;
+        left:100px;
+        top:130px;
+      }
+      p{
+        position:absolute;
+        left:400px;
+        top:400px;
+      }
+      #reset{
+        position:absolute;
+        left:400px;
+
+      }
+    </style>
+
+  </head>
+  <body>
+
+    <div class="box" id="shape" onclick="myfunc(this); msr()"></div>
+    <button id="reset" onclick="gih()">RESET</button>
+    <script>
+    var c=0;
+
+    var lastclick=0;
+      function myfunc(dd){
+      dd.style.background="#"+Math.floor(Math.random()*1000000);
+        document.getElementById("shape").style.width=Math.floor(Math.random()*10+100)+"px";
+         document.getElementById("shape").style.height=Math.floor(Math.random()*10+100)+"px";
+          document.getElementById("shape").style.left=Math.floor(Math.random()*100*2)+"px";
+            document.getElementById("shape").style.top=Math.floor(Math.random()*100*2)+"px";
+          }
+          function msr(){
+            var d = new Date();
+            if(Math.floor(Math.random()*10)>7)document.getElementById("shape").style.borderRadius="50%";
+            else {
+              document.getElementById("shape").style.borderRadius="0%";
+            }
+            if(c==0)document.getElementById("demo").innerHTML ="0 seconds "+" CLICKED "+(++c)+" TIMES";
+            else
+            document.getElementById("demo").innerHTML = (d.getTime()-lastclick)/1000 +"seconds "+" CLICKED "+(++c)+" TIMES";
+            lastclick=d.getTime();
+          }
+          function gih(){c=0;}
+    </script>
+<p id="demo"></p>
+  </body>
+</html>
